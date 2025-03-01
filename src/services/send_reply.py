@@ -1,5 +1,5 @@
-from src.services.facebook_api import get_comments_from_posts, reply_to_comment
-from src.services.ai_response import generate_ai_response
+from src.services.get_comments import get_comments_from_posts, reply_to_comment
+from src.services.ai_reply import generate_ai_response
 from src.utils.logger import logger
 
 def process_comments():

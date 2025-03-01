@@ -1,7 +1,7 @@
 import requests
 from src.config import FACEBOOK_ACCESS_TOKEN, PAGE_ID
 from src.utils.logger import logger
-from src.utils.exceptions import FacebookAPIError
+from src.utils.exception import FacebookAPIError
 
 def get_comments_from_posts():
     """Fetches latest comments from Facebook posts."""

@@ -1,7 +1,7 @@
 import google.generativeai as genai
 from src.config import GEMINI_API_KEY
 from src.utils.logger import logger
-from src.utils.exceptions import GeminiAPIError
+from src.utils.exception import GeminiAPIError
 
 genai.configure(api_key=GEMINI_API_KEY)
 

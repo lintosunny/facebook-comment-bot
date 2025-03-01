@@ -1,5 +1,5 @@
 import unittest
-from src.services.ai_response import generate_ai_response
+from src.services.ai_reply import generate_ai_response
 
 class TestAIResponse(unittest.TestCase):
     def test_response(self):
