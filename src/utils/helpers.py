@@ -1,15 +1,17 @@
 from src.utils.exception import FacebookBotException
 from src.utils.logger import logger
-from datetime import datetime
+from datetime import datetime, timezone
 import requests
 import sys
 import os
 import json
 
-
 artifact_file = "last_updated.json"
 artifact_path = os.path.join(os.getcwd(), "artifacts")
 ARTIFACT_FILEPATH = os.path.join(artifact_path, artifact_file)
+
+default_datetime = datetime.min.replace(tzinfo=timezone.utc) # Returns 0001-01-01
+new_datetime = datetime.now(timezone.utc) # Returns 0001-01-01
 
 
 def str_to_date(fb_date: str) -> datetime:
@@ -33,8 +35,6 @@ def date_to_str(date_inp: datetime) -> str:
 
 
 def get_last_updated():
-    default_datetime = datetime.min # Returns 0001-01-01
-    
     if not os.path.exists(ARTIFACT_FILEPATH):
         os.makedirs(artifact_path, exist_ok=True)
         logger.info("Artifact path created")
@@ -65,11 +65,11 @@ def get_last_updated():
             raise FacebookBotException (e, sys)
         
 
-def update_last_updated(new_time):
+def update_last_updated():
     try:
         with open(ARTIFACT_FILEPATH, "w") as file:
-            json.dump({"last_updated_str":date_to_str(new_time)}, file)
-        logger.info(f"updated last_updated.json to {new_time}")
+            json.dump({"last_updated_str":date_to_str(new_datetime)}, file)
+        logger.info(f"updated last_updated.json to {new_datetime}")
     except Exception as e:
             logger.info(f"Didn't update last_updated.json")
             raise FacebookBotException (e, sys)
