@@ -29,3 +29,23 @@ FACEBOOK_ACCESS_TOKEN = <your-facebook-access-token>
 GEMINI_API_KEY = <your-gemini-api-key>
 PAGE_ID = <your-facebook-page-id>
 ```
+
+### 6. Update artifacts
+Update the date in ```./artifacts/last_updated.json```. If you want to reply comments posted from yesterday, change date to yesterday's.
+After a successful run, the system will automatically update the date to the current timestamp. Ensure the datetime format remains as ```YYYY-MM-DDTHH:MM:SS+0000```
+```
+{"last_updated_str": "<your-desired-datetime>"}
+```
+
+### 7. Update prompt
+Update the prompt in ```./src/config/prompt.yaml``` as per your use case.
+```
+prompt_template: |
+ <your-prompt>
+```
+
+### 8. Run locally
+Run the script on your command prompt
+```
+python main.py
+```
