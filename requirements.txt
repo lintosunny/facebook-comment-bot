@@ -1,5 +1,6 @@
-requests
-python-dotenv
 google-generativeai
+requests
+logging
+datetime
 
 -e .
