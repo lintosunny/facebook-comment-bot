@@ -15,6 +15,7 @@ new_datetime = datetime.now(timezone.utc) # Returns 0001-01-01
 
 
 def str_to_date(fb_date: str) -> datetime:
+    """Convert str to datetime"""
     try:
         converted_date = datetime.strptime(fb_date, "%Y-%m-%dT%H:%M:%S%z")
         logger.info(f"{fb_date} converted to datetime")
@@ -25,6 +26,7 @@ def str_to_date(fb_date: str) -> datetime:
     
     
 def date_to_str(date_inp: datetime) -> str:
+    """Convert datetime to str"""
     try:
         converted_date = date_inp.strftime("%Y-%m-%dT%H:%M:%S%z")
         logger.info(f"{date_inp} converted to str")
@@ -35,6 +37,7 @@ def date_to_str(date_inp: datetime) -> str:
 
 
 def get_last_updated():
+    """Retrieve last updated datetime"""
     if not os.path.exists(ARTIFACT_FILEPATH):
         os.makedirs(artifact_path, exist_ok=True)
         logger.info("Artifact path created")
@@ -66,6 +69,7 @@ def get_last_updated():
         
 
 def update_last_updated():
+    """Update the last updated time using datetime.now()"""
     try:
         with open(ARTIFACT_FILEPATH, "w") as file:
             json.dump({"last_updated_str":date_to_str(new_datetime)}, file)
