@@ -20,7 +20,7 @@ def str_to_date(fb_date: str) -> datetime:
         logger.info(f"{fb_date} converted to datetime")
         return converted_date
     except Exception as e:
-        logger.info(f"{fb_date} not converted to datetime")
+        logger.error(f"{fb_date} not converted to datetime")
         raise FacebookBotException (e, sys)
     
     
@@ -30,7 +30,7 @@ def date_to_str(date_inp: datetime) -> str:
         logger.info(f"{date_inp} converted to str")
         return converted_date
     except Exception as e:
-        logger.info(f"{date_inp} not converted to str")
+        logger.error(f"{date_inp} not converted to str")
         raise FacebookBotException (e, sys)
 
 
@@ -61,7 +61,7 @@ def get_last_updated():
             logger.info("loaded last updated date")
             return last_updated
         except Exception as e:
-            logger.info(f"Didn't get last updated date")
+            logger.error(f"Didn't get last updated date")
             raise FacebookBotException (e, sys)
         
 
@@ -71,16 +71,5 @@ def update_last_updated():
             json.dump({"last_updated_str":date_to_str(new_datetime)}, file)
         logger.info(f"updated last_updated.json to {new_datetime}")
     except Exception as e:
-            logger.info(f"Didn't update last_updated.json")
+            logger.error(f"Didn't update last_updated.json")
             raise FacebookBotException (e, sys)
-    
-'''
-if __name__ == "__main__":
-    try:
-        update_last_updated(datetime.now())
-
-
-    except Exception as e:
-        raise FacebookBotException(e, sys)
-
-'''

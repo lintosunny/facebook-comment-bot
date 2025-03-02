@@ -2,7 +2,6 @@ from src.utils.exception import FacebookBotException
 from src.utils.logger import logger
 from src.config import GEMINI_API_KEY
 import google.generativeai as genai
-import sys
 
 genai.configure(api_key=GEMINI_API_KEY)
 
@@ -39,12 +38,3 @@ def generate_ai_response(comment: str) -> str:
     except Exception as e:
         logger.error(f"Gemini API Error: {e}")
         raise FacebookBotException("Failed to generate AI response")
-    
-
-if __name__ == "__main__":
-    try:
-        generate_ai_response("what is the cost of the toys?")
-
-
-    except Exception as e:
-        raise FacebookBotException(e, sys)

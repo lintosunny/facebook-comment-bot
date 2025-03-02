@@ -38,7 +38,7 @@ def get_comment():
                 for comment in item['comments']['data']:
                     try:
                         if (str_to_date(comment['created_time']) > last_updated_date) and (comment['from']['id'] != page_id):               
-                            comments_list.append((comment['id'], comment['message']))
+                            comments_list.append({"id": comment['id'], "message": comment['message']})
                             logger.info(f"{comment['id']} added to comments_list")
                     except Exception as e:
                         logger.info(f"skipping {comment['id']} due to {e}")
@@ -48,16 +48,5 @@ def get_comment():
         return comments_list
     
     except Exception as e:
-        logger.info(f"failed due to {e}")
+        logger.error(f"failed due to {e}")
         raise FacebookBotException (e, sys)
-
-
-    
-
-if __name__ == "__main__":
-    try:
-        get_comment()
-
-
-    except Exception as e:
-        raise FacebookBotException(e, sys)
