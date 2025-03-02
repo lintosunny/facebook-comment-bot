@@ -5,6 +5,7 @@ import requests
 import sys
 import os
 import json
+import yaml
 
 artifact_file = "last_updated.json"
 artifact_path = os.path.join(os.getcwd(), "artifacts")
@@ -76,4 +77,17 @@ def update_last_updated():
         logger.info(f"updated last_updated.json to {new_datetime}")
     except Exception as e:
             logger.error(f"Didn't update last_updated.json")
+            raise FacebookBotException (e, sys)
+    
+
+def load_prompt():
+    """Load prompt template from a YAML file"""
+    try:
+        with open("src/config/prompt.yaml", "r") as file:
+            prompt_data = yaml.safe_load(file)
+        logger.info("Fetched prompt from YAML file")
+        return prompt_data["prompt_template"]
+    
+    except Exception as e:
+            logger.error(f"Didn't get prompt from prompt.yaml")
             raise FacebookBotException (e, sys)

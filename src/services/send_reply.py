@@ -1,6 +1,6 @@
 from src.utils.exception import FacebookBotException
 from src.utils.logger import logger
-from src.config import FACEBOOK_ACCESS_TOKEN
+from src.config.config import FACEBOOK_ACCESS_TOKEN
 import requests
 import sys
 

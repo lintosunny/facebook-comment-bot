@@ -1,7 +1,7 @@
 from src.utils.exception import FacebookBotException
 from src.utils.logger import logger
-from src.config import FACEBOOK_ACCESS_TOKEN
-from src.config import PAGE_ID
+from src.config.config import FACEBOOK_ACCESS_TOKEN
+from src.config.config import PAGE_ID
 from src.utils.helpers import str_to_date
 from src.utils.helpers import get_last_updated
 import requests
