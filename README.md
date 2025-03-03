@@ -6,6 +6,7 @@ Facebook comment bot is an automated system that responds to comments on your Fa
 - **Filters** inappropriate or irrelevant comments  
 - **Logs** interactions for monitoring and improvements  
 
+## Architecture
 ![Architecture Diagram](docs/architecture.png)
 
 
